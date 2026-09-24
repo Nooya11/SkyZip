@@ -18,6 +18,17 @@ npm run dev          # → http://localhost:5173
   - "가짜 병 +1" — 선택한 시간대의 가짜 하늘 사진·병을 만듭니다. 하루 3병 제한에 걸리지 않아 17종 조합 테스트에 씁니다.
   - 전체 초기화
 
+## 폰에서 확인하기 (PC 없이)
+
+**1) 웹으로 바로 보기** — 저장소 **Settings → Pages → Source: GitHub Actions** 를 한 번 켜 두면,
+푸시할 때마다 https://nooya11.github.io/SkyZip/ 에 올라갑니다. 폰 크롬으로 열면 카메라까지 동작하고,
+크롬 메뉴의 "홈 화면에 추가"로 앱처럼 띄울 수 있습니다. (`?debug` 를 붙이면 테스트 패널)
+
+**2) 진짜 앱(APK)으로 설치** — 푸시할 때마다 GitHub Actions 가 디버그 APK 를 빌드해
+[preview 릴리스](https://github.com/Nooya11/SkyZip/releases/tag/preview)에 올립니다.
+폰으로 그 페이지에서 `haneul-chaejip.apk` 를 받아 설치하세요. 처음엔 "출처를 알 수 없는 앱 설치"를 허용해야 합니다.
+플레이스토어 업로드용 서명 빌드(AAB)는 이것과 별개입니다.
+
 ## 구조
 
 ```

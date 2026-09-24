@@ -1,0 +1,57 @@
+# 푸시할 때마다 테스트용 APK 를 빌드해서 "preview" 릴리스에 올린다.
+# 폰 브라우저로 릴리스 페이지에 들어가 app-debug.apk 를 받아 설치하면 된다.
+name: Android APK
+
+on:
+  push:
+    paths: ['www/**', 'android/**', 'package*.json', 'capacitor.config.json', '.github/workflows/android-apk.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-apk
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: 웹 코드 → 안드로이드 프로젝트로 복사
+        run: |
+          npm ci
+          npx cap sync android
+
+      - name: 디버그 APK 빌드
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: preview 릴리스에 APK 올리기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk haneul-chaejip.apk
+          gh release delete preview --yes --cleanup-tag || true
+          gh release create preview haneul-chaejip.apk \
+            --prerelease \
+            --target "$GITHUB_SHA" \
+            --title "하늘채집 테스트 빌드" \
+            --notes "커밋 ${GITHUB_SHA::7} 에서 빌드한 디버그 APK. 폰에서 받아 설치하세요 (출처를 알 수 없는 앱 설치 허용 필요)."
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haneul-chaejip-debug-apk
+          path: haneul-chaejip.apk
