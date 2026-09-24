@@ -1,0 +1,24 @@
+{
+  "name": "haneul-chaejip",
+  "version": "0.1.0",
+  "private": true,
+  "description": "하늘채집 — 하루의 하늘을 병에 담아 볼따구를 탄생시키는 감성 수집 앱",
+  "type": "module",
+  "scripts": {
+    "fonts": "node scripts/copy-fonts.mjs",
+    "dev": "node scripts/serve.mjs",
+    "sync": "npx cap sync android",
+    "android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@fontsource/cutive-mono": "^5.3.0",
+    "@fontsource/gaegu": "^5.3.0",
+    "@fontsource/gowun-batang": "^5.3.0",
+    "@fontsource/nanum-gothic-coding": "^5.3.0"
+  }
+}

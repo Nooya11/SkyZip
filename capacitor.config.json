@@ -1,0 +1,8 @@
+{
+  "appId": "com.haneulchaejip.app",
+  "appName": "하늘채집",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#ECE6D9"
+  }
+}

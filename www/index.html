@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#ECE6D9">
+  <title>하늘채집</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 구름 모양 카메라 창. 경로는 home.js 의 CLOUD 와 같다 (-2..102 → 0..1) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <clipPath id="cloud-clip" clipPathUnits="objectBoundingBox">
+      <path transform="scale(0.009615) translate(2 2)" d="M22 31C20 15 40 5 52 15C60 3 85 7 83 27C97 29 101 49 91 58C101 70 93 91 76 86C68 99 45 99 41 89C27 99 4 91 11 74C-1 66 1 44 14 41C10 36 15 30 22 31Z"/>
+    </clipPath>
+  </svg>
+  <div id="app"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
